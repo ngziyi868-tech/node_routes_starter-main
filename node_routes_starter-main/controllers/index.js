@@ -1,31 +1,32 @@
 const mongodb = require("../db/connect");
 const ObjectId = require("mongodb").ObjectId;
 
-const awesomeFunction = (Req, res) => {
+const awesomeFunction = (req, res) => {
   res.send("Hello World!");
 };
 
-const tooeleTechFunction = (Req, res) => {
+const tooeleTech = (req, res) => {
   res.json("Tooele Tech is Awesome!");
 };
 
 const getAllStudents = async (req, res) => {
   try {
-    const db = mongodb.getDb().db("test");
+    const collection = mongodb
+      .getDb()
+      .db("Test")
+      .collection("students");
 
-    const students = await db
-      .collection("students")
-      .find({})
-      .toArray();
+    const result = await collection.find({}).toArray();
 
-    res.status(200).json(students);
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).json(result);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      message: "Error getting students",
-      error: error.message,
-    });
+    res.status(500).json({ error: error.message });
   }
 };
 
-module.exports = { awesomeFunction, tooeleTechFunction, getAllStudents };
+module.exports = {
+  awesomeFunction,
+  tooeleTech,
+  getAllStudents
+};
