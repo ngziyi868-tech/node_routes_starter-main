@@ -1,6 +1,31 @@
+GET http://localhost:3001/ HTTP/1.1
 
-GET http://localhost:3000/ttech HTTP/1.1
+GET http://localhost:3001/ttech HTTP/1.1
 
-GET http://localhost:3000/ HTTP/1.1
+GET http://localhost:3001/students HTTP/1.1
 
-GET http://localhost:3000/students HTTP/1.1
+GET http://localhost:3001/students/6a0bb6e7c44c93f890b26a10 HTTP/1.1
+
+POST http://localhost:3001/students HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Phil",
+    "lastName": "Reeves",
+    "email": "bowser@killer.com",
+    "age": "34",
+    "currentCollege": "Assassin's Academy"
+}
+
+PUT http://localhost:3001/students/6a0bb6e7c44c93f890b26a10 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Phil",
+    "lastName": "Reeves",
+    "email": "phil@updated.com",
+    "age": "35",
+    "currentCollege": "Tooele Tech"
+}
+
+DELETE http://localhost:3001/students/6a0bb6e7c44c93f890b26a10 HTTP/1.1
