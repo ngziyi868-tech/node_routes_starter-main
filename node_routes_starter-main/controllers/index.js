@@ -120,6 +120,7 @@ const deleteStudent = async (req, res) => {
   }
 };
 
+
 module.exports = {
   awesomeFunction,
   tooeleTech,
